@@ -48,9 +48,10 @@
                                            class="btn btn-sm btn-circle btn-outline-info"
                                            title="Show"><i
                                                     class="fa fa-eye"></i></a>
-                                        <a href="/edit-contact.ejs/<%= contact._id %>"
-                                           class="btn btn-sm btn-circle btn-outline-secondary"
-                                           title="Edit"><i class="fa fa-edit"></i></a>
+                                        <!-- with this -->
+                                        <a href="/update-contact/<%= contact._id %>" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
                                         <a href="/elete-contact/<%= contact._id %>"
                                            class="btn btn-sm btn-circle btn-outline-danger" title="Delete"
                                            onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
