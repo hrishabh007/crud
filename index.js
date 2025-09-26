@@ -54,17 +54,26 @@ app.post('/add-contact', async (req, res) => {
 app.get('/update-contact/:id', async (req, res) => {
     const contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).send('Contact not found');
-    res.render('update-contact', { contact });
+    res.render('update-contact', {contact});
 });
 
 // EDIT (submit form)
 app.post('/update-contact/:id', async (req, res) => {
-    await Contact.findByIdAndUpdate(req.params.id, req.body, { runValidators: true });
+    const {first_name, last_name, email, phone, address} = req.body;
+    await Contact.findByIdAndUpdate(req.params.id, {
+        first_name,
+        last_name,
+        email,
+        phone,
+        address
+    }, {runValidators: true});
+    //  await Contact.findByIdAndUpdate(req.params.id, req.body, {runValidators: true});
     res.redirect('/');
 });
 
-app.get('/delete-contact:id', (req, res) => {
-    res.send('Contact Page');
+app.get('/delete-contact/:id', async (req, res) => {
+    await Contact.findByIdAndDelete(req.params.id);
+    res.redirect('/');
 });
 
 app.listen(3000, () => console.log('Server is running on port 3000'));
