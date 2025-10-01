@@ -3,7 +3,7 @@ import connectDB from "./config/database.js";           // default export
 import contactRoutes from "./routes/contacts.routes.js"; // ✅ this must be a Router
 
 const app = express();
-
+const port= process.env.PORT || 3000;
 await connectDB();
 
 // Middleware
@@ -21,4 +21,4 @@ app.use((err, req, res, next) => {
     res.status(500).send("Something broke!");
 });
 
-app.listen(3000, () => console.log("Server is running on port 3000"));
+app.listen(port, () => console.log(`Server is running on port ${port}`));
