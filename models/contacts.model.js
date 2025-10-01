@@ -1,29 +1,15 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const contactsSchema = mongoose.Schema({
-    first_name: {
-        type: String,
-    },
-    last_name: {
-        type: String,
-    },
-    email: {
-        type: String,
-    },
-    phone: {
-        type: String,
-    },
-    address: {
-        type: String,
-    }
-})
+const contactsSchema = new mongoose.Schema({
+    first_name: String,
+    last_name: String,
+    email: String,
+    phone: String,
+    address: String,
+});
 
-const contact = mongoose.model('Contact', contactsSchema)
-module.exports = contact
-// db.contacts.insertOne({
-//     first_name: "Yahu",
-//     last_name: "Baba",
-//     email: "yahubaba@emailc.com",
-//     phone: "99889988",
-//     address: "#123, AB Road, Delhi"
-// })
+const Contact = mongoose.model("Contact", contactsSchema);
+
+
+
+export default Contact; // ✅ default
