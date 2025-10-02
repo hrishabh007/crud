@@ -27,4 +27,4 @@ router.post('/update-contact/:id', updateContact);
 
 router.get('/delete-contact/:id', deleteContact);
 
-export default router; // ✅ export a Rout
+export default router; // ✅ export a Route
