@@ -29,7 +29,7 @@
                             <% contacts.forEach((contact,index) => { %>
                                 <tr>
                                     <td>
-                                        <%= index + 1 %>
+                                        <%= counter + index %>
                                     </td>
                                     <td>
                                         <%= contact.first_name %>
@@ -58,6 +58,7 @@
                                            onclick="return confirm('Are you sure?');">
                                             <i class="fa fa-times"></i>
                                         </a>
+
                                     </td>
                                 </tr>
                             <% }); %>
@@ -65,6 +66,30 @@
                             </tbody>
                         </table>
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center" >
+
+                            <!-- Previous -->
+                            <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                                <a class="page-link" href="?page=<%= Math.max(1, currentPage - 1) %>">Previous</a>
+                            </li>
+
+                            <!-- Numbers -->
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+                            <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+                                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                            </li>
+                            <% } %>
+
+                            <!-- Next -->
+                            <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                                <a class="page-link" href="?page=<%= Math.min(totalPages, currentPage + 1) %>">Next</a>
+                            </li>
+
+
+
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
